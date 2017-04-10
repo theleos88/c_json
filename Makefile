@@ -32,8 +32,11 @@ $(libname): $(obj)
 #	@echo $<
 #	$(CC) -c -I$(hdir)  $< -o $@
 
-$(obj):
+$(obj): | odir
 	$(CC) -c $(src) -I$(hdir) -o $@
+
+odir:
+	mkdir -p $(odir)
 
 $(objs):
 	$(CC) -c $(SHAREDCP) $(src) -I$(hdir) -o $@
